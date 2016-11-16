@@ -1,0 +1,30 @@
+
+<div class="col-md-offset-3 col-md-8">
+<%= form_for @post do |f| %>
+
+    <div class="form-group">
+      <%= f.label :header,'Заголовок блога', class: 'col-md-12 control-label' %>
+      <div class="col-md-12">
+        <%= f.text_field :header, placeholder: 'Заголовок блога', class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :body,'Содержание', class: 'col-md-12 control-label' %>
+      <%= f.text_area :body, placeholder: 'Содержание', class: 'form-control', style:'height:150px' %>
+
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10 margin-top20">
+        <%= f.submit yield(:button_text), class: 'btn btn-primary' %>
+        <%= link_to 'Отмена', root_path, class: 'btn btn-success' %>
+        <%= link_to post_path(@post), class: 'btn btn-danger',
+                    data: {confirm: "Вы уверены что хотите удалить статью: #{@post.header}?"}, method: :delete do %>
+            Удалить
+            <span class="glyphicon glyphicon-remove"></span>
+        <% end %>
+      </div>
+    </div>
+<% end %>
+</div>

@@ -1,0 +1,30 @@
+
+<div class="page-header">
+  <h1> Заметки из блога
+    <small>
+      <%= link_to 'Создать новую запись', new_post_path, class: 'btn btn-primary' %>
+    </small>
+  </h1>
+</div>
+
+
+<% @posts.each do |post| %>
+
+    <div class="col-md-offset-3 col-md-8">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3><%= post.header %></h3>
+          <p class="fix_height"><%= post.body %></p>
+          <p>
+            <%= post.created_at %>
+            <%= link_to 'Редактировать запись', edit_post_path(post), class: 'btn btn-primary' %>
+            <%= link_to post_path(post), class: 'btn btn-danger',
+                        data: {confirm: "Вы уверены что хотите удалить статью: #{post.header}?"}, method: :delete do %>
+                Удалить
+                <span class="glyphicon glyphicon-remove"></span>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+<% end %>

@@ -1,0 +1,9 @@
+<div class="page-header">
+  <h1> Заметки из блога
+    <small>
+      <%= link_to 'Назад', root_path, class: 'btn btn-primary' %>
+    </small>
+  </h1>
+</div>
+<%= provide :button_text, 'Создать запись' %>
+<%=	 render 'form' %>
